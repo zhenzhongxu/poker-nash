@@ -7,8 +7,8 @@
     <ProjectGuid>{9188C7E4-95E3-4B80-840E-FFFE632A5B67}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>aidriven.poker.nash.core</RootNamespace>
-    <AssemblyName>aidriven.poker.nash.core</AssemblyName>
+    <RootNamespace>Aidriven.Poker.Nash.Core</RootNamespace>
+    <AssemblyName>Aidriven.Poker.Nash.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICM\Icm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
