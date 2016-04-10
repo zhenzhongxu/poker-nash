@@ -1,0 +1,9 @@
+﻿<Window x:Class="GameTreeVisualizer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Canvas HorizontalAlignment="Left" Height="323" Margin="0,10,-33,-14" VerticalAlignment="Top" Width="550" Initialized="Canvas_Initialized"/>
+
+    </Grid>
+</Window>

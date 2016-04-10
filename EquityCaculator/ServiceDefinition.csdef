@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="EquityCaculator" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
+  <WorkerRole name="EquityCalc" vmsize="Small">
+    <Imports></Imports>
+    <LocalResources>
+      <LocalStorage name="TempDatStorage" cleanOnRoleRecycle="true" />
+    </LocalResources>
+    <ConfigurationSettings>
+      <Setting name="BlobStorage" />
+    </ConfigurationSettings>
+  </WorkerRole>
+</ServiceDefinition>

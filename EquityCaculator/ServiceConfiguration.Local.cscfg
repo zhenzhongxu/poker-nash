@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="EquityCaculator" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="EquityCalc">
+    <Instances count="5" />
+    <ConfigurationSettings>
+      <Setting name="BlobStorage" value="DefaultEndpointsProtocol=https;AccountName=zhenx;AccountKey=LXseJKbGrz7JIQJOqdZ9ezkxUZv8cINtRDc3d9cGqtuL7a1s0Q/LVs1H/ujdT+8icLzFUd+TQyNtZmXQ1ktlcg==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
