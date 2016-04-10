@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{84B5CFC4-94F9-4E3D-B93B-3A322F989480}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{688E84FA-B29D-479A-9B50-17BD89535727}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\WebApplication1-WAWS-dev.json = PublishScripts\Configurations\WebApplication1-WAWS-dev.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A5FA7692-85F1-4764-9983-7C3E2489DA9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTreeDraft", "GameTreeDraft.csproj", "{E921E98E-C86A-4D47-8588-C069F339898D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTVisualizer", "..\GTVisualizer\GTVisualizer.csproj", "{D729BD05-276C-442F-9850-62823485ED1F}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "EquityCaculator", "..\EquityCaculator\EquityCaculator.ccproj", "{7CE35FF6-B85C-4140-88CC-8A073A695260}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquityCalc", "EquityCalc\EquityCalc.csproj", "{4BD4CC43-822B-4FA3-A6D3-2AE4BFC6D54C}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CalcWebsite", "CalcWebsite\CalcWebsite.ccproj", "{309A29AD-6136-4374-9965-9BFCF9AFAB79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcWeb", "CalcWeb\CalcWeb.csproj", "{6C1A0D1C-4B56-468A-ABEC-4D4CB46BB847}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.XHandEval", "Poker.XHandEval\Poker.XHandEval.csproj", "{5F54751B-6BB6-4678-9485-67E33460D605}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E921E98E-C86A-4D47-8588-C069F339898D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E921E98E-C86A-4D47-8588-C069F339898D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E921E98E-C86A-4D47-8588-C069F339898D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E921E98E-C86A-4D47-8588-C069F339898D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D729BD05-276C-442F-9850-62823485ED1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D729BD05-276C-442F-9850-62823485ED1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D729BD05-276C-442F-9850-62823485ED1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D729BD05-276C-442F-9850-62823485ED1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CE35FF6-B85C-4140-88CC-8A073A695260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CE35FF6-B85C-4140-88CC-8A073A695260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CE35FF6-B85C-4140-88CC-8A073A695260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CE35FF6-B85C-4140-88CC-8A073A695260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BD4CC43-822B-4FA3-A6D3-2AE4BFC6D54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BD4CC43-822B-4FA3-A6D3-2AE4BFC6D54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BD4CC43-822B-4FA3-A6D3-2AE4BFC6D54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BD4CC43-822B-4FA3-A6D3-2AE4BFC6D54C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{309A29AD-6136-4374-9965-9BFCF9AFAB79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{309A29AD-6136-4374-9965-9BFCF9AFAB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{309A29AD-6136-4374-9965-9BFCF9AFAB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{309A29AD-6136-4374-9965-9BFCF9AFAB79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C1A0D1C-4B56-468A-ABEC-4D4CB46BB847}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C1A0D1C-4B56-468A-ABEC-4D4CB46BB847}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C1A0D1C-4B56-468A-ABEC-4D4CB46BB847}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C1A0D1C-4B56-468A-ABEC-4D4CB46BB847}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F54751B-6BB6-4678-9485-67E33460D605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F54751B-6BB6-4678-9485-67E33460D605}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F54751B-6BB6-4678-9485-67E33460D605}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F54751B-6BB6-4678-9485-67E33460D605}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{688E84FA-B29D-479A-9B50-17BD89535727} = {84B5CFC4-94F9-4E3D-B93B-3A322F989480}
+	EndGlobalSection
+EndGlobal

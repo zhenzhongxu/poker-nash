@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Workload">
+  <DataContextMoniker Name="/WorkloadDataContext" />
+  <nestedChildShapes>
+    <classShape Id="644f2fb6-00a9-40a6-9372-a12853166959" absoluteBounds="1.375, 2.5, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/WorkloadDataContext/Workload" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5341d57f-5684-4d2a-8b8f-7eee0989052f" absoluteBounds="1.3899999999999997, 2.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eb3d771e-8127-422b-96af-e77fcfe65a98" absoluteBounds="3.625, 2.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/WorkloadDataContext/Exception" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2867ec71-8742-422e-b44a-3eb58c88cb52" absoluteBounds="3.6399999999999997, 2.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

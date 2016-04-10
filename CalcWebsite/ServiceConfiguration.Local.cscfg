@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="CalcWebsite" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="CalcWeb">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="popokrStorage" value="DefaultEndpointsProtocol=https;AccountName=popokr;AccountKey=o3SCCN7s7Bh8hRrX8TaFBnJddi4mDYcmfs6RyrZ4BkGjJCrRXt6CYUK/yWSNBA9oS56cpJJySNTlRtxHPAY2qQ==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

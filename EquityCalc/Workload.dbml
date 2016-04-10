@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ComputeManager" Class="WorkloadDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=tcp:svq9lhbaqu.database.windows.net,1433;Initial Catalog=ComputeManager;User ID=zhenx" SettingsObjectName="EquityCalc.Properties.Settings" SettingsPropertyName="ComputeManagerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Workload" Member="Workloads">
+    <Type Name="Workload">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WorkloadId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartIndex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EndIndex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OutputLocation" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Exception" Member="Exceptions">
+    <Type Name="Exception">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Exception" Member="Exception1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="OccuredTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.p_GetNextWorkload" Method="p_GetNextWorkload">
+    <ElementType Name="p_GetNextWorkloadResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WorkloadId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StartIndex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EndIndex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

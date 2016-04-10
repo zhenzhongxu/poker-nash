@@ -1,0 +1,380 @@
+﻿package net.holdemresources.handevaluation.preflop.hands;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class HandEval3Way
+{
+  private final double[] results;
+  
+  private static class SingletonHolder
+  {
+    private static final HandEval3Way INSTANCE = load("net/holdemresources/handevaluation/preflop/hands/data/3wh.dat");
+    
+    private static final HandEval3Way load(String file)
+    {
+      HandEval3Way h3w = new HandEval3Way(null);
+      try
+      {
+        h3w.load(file);
+        return h3w;
+      }
+      catch (FileNotFoundException e)
+      {
+        e.printStackTrace();
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+      }
+      return null;
+    }
+  }
+  
+  public static HandEval3Way getInstance()
+  {
+    return SingletonHolder.INSTANCE;
+  }
+  
+  private static final int[] iidx = ;
+  
+  private HandEval3Way()
+  {
+    this.results = new double[iidx['ª']];
+  }
+  
+  private static int[] initIndices()
+  {
+    int[] r = new int['«'];
+    r[0] = 0;
+    for (int i = 1; i < r.length; i++) {
+      r[i] = (r[(i - 1)] + 13 * ((i - 1) * i) / 2);
+    }
+    return r;
+  }
+  
+  private static final int getIndex(int permutation, int hand1, int hand2, int hand3)
+  {
+    switch (permutation)
+    {
+    case 123: 
+      return iidx[(hand1 + 1)] + (hand2 * (hand2 + 1) / 2 + hand3) * 13;
+    case 132: 
+      return iidx[(hand1 + 1)] + (hand3 * (hand3 + 1) / 2 + hand2) * 13;
+    case 213: 
+      return iidx[(hand2 + 1)] + (hand1 * (hand1 + 1) / 2 + hand3) * 13;
+    case 231: 
+      return iidx[(hand2 + 1)] + (hand3 * (hand3 + 1) / 2 + hand1) * 13;
+    case 312: 
+      return iidx[(hand3 + 1)] + (hand1 * (hand1 + 1) / 2 + hand2) * 13;
+    case 321: 
+      return iidx[(hand3 + 1)] + (hand2 * (hand2 + 1) / 2 + hand1) * 13;
+    }
+    return -1;
+  }
+  
+  public final double[] getResults(int hand1, int hand2, int hand3)
+  {
+    int p = EvalResultHandler.getPermutation(hand1, hand2, hand3);
+    int[] perm = EvalResultHandler.getPermutation(p);
+    int idx = getIndex(p, hand1, hand2, hand3);
+    
+    double[] result = new double[13];
+    for (int i = 0; i < 13; i++) {
+      result[i] = this.results[(idx + perm[i])];
+    }
+    return result;
+  }
+  
+  public final double getFrequency(int hand1, int hand2, int hand3)
+  {
+    int p = EvalResultHandler.getPermutation(hand1, hand2, hand3);
+    int idx = getIndex(p, hand1, hand2, hand3);
+    
+    double result = 0.0D;
+    for (int i = 0; i < 13; i++) {
+      result += this.results[(idx + i)];
+    }
+    return result;
+  }
+  
+  public final void copyResults(int hand1, int hand2, int hand3, double[] result)
+  {
+    int p = EvalResultHandler.getPermutation(hand1, hand2, hand3);
+    int[] perm = EvalResultHandler.getPermutation(p);
+    int idx = getIndex(p, hand1, hand2, hand3);
+    for (int i = 0; i < 13; i++) {
+      result[i] = this.results[(idx + perm[i])];
+    }
+  }
+  
+  public final void addResults(int hand1, int hand2, int hand3, double[] result, double weight)
+  {
+    if (weight == 0.0D) {
+      return;
+    }
+    int p = EvalResultHandler.getPermutation(hand1, hand2, hand3);
+    int[] perm = EvalResultHandler.getPermutation(p);
+    int idx = getIndex(p, hand1, hand2, hand3);
+    for (int i = 0; i < 13; i++) {
+      result[i] += weight * this.results[(idx + perm[i])];
+    }
+  }
+  
+  private void load(String filename)
+    throws FileNotFoundException, IOException
+  {
+    BufferedInputStream br = null;
+    if (new File(filename).exists()) {
+      br = new BufferedInputStream(
+        new FileInputStream(filename));
+    } else {
+      br = new BufferedInputStream(
+        getClass().getResourceAsStream("/" + filename));
+    }
+    byte[] b = new byte[104];
+    int idx = 0;
+    for (int i = 0; i < 169; i++) {
+      for (int j = 0; j <= i; j++) {
+        for (int k = 0; k <= j; k++)
+        {
+          br.read(b);
+          for (int l = 0; l < 13; l++)
+          {
+            this.results[idx] = BitConverter.toDouble(b, 8 * l);
+            idx++;
+          }
+        }
+      }
+    }
+    br.close();
+  }
+}
+
+
+
+
+
+
+
+
+
+
+package net.holdemresources.handevaluation.preflop.hands;
+
+public class EvalResultHandler
+{
+  private static final int[] p12 = { 0, 1, 2 };
+  private static final int[] p21 = { 0, 2, 1 };
+  private static final int[] p123 = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+  private static final int[] p132 = { 0, 2, 1, 3, 5, 4, 7, 6, 9, 8, 10, 12, 11 };
+  private static final int[] p213 = { 0, 1, 10, 6, 8, 11, 3, 7, 4, 12, 2, 5, 9 };
+  private static final int[] p231 = { 0, 2, 10, 7, 9, 12, 3, 6, 5, 11, 1, 4, 8 };
+  private static final int[] p312 = { 0, 10, 1, 6, 11, 8, 7, 3, 12, 4, 2, 9, 5 };
+  private static final int[] p321 = { 0, 10, 2, 7, 12, 9, 6, 3, 11, 5, 1, 8, 4 };
+  
+  public static final int[] getPermutation(int p)
+  {
+    switch (p)
+    {
+    case 12: 
+      return p12;
+    case 21: 
+      return p21;
+    case 123: 
+      return p123;
+    case 132: 
+      return p132;
+    case 213: 
+      return p213;
+    case 231: 
+      return p231;
+    case 312: 
+      return p312;
+    case 321: 
+      return p321;
+    }
+    return null;
+  }
+  
+  public static final int[] ResultIndex2w = { 11, 12, 21 };
+  public static final int[] ResultIndex3w = { 111, 113, 131, 122, 123, 132, 212, 221, 213, 231, 311, 312, 321 };
+  public static final float[][] Equity3Way = {
+    { 0.3333333F, 0.5F, 0.5F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F }, 
+    { 0.3333333F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.5F, 1.0F, 0.0F }, 
+    { 0.3333333F, 0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.5F, 0.0F, 1.0F } };
+  public static final float[][] Equity2Way = {
+    { 0.5F, 1.0F, 0.0F }, 
+    { 0.5F, 0.0F, 1.0F } };
+  
+  public static final int getResultIndex(int res)
+  {
+    switch (res)
+    {
+    case 11: 
+      return 0;
+    case 12: 
+      return 1;
+    case 21: 
+      return 2;
+    case 111: 
+      return 0;
+    case 113: 
+      return 1;
+    case 131: 
+      return 2;
+    case 122: 
+      return 3;
+    case 123: 
+      return 4;
+    case 132: 
+      return 5;
+    case 212: 
+      return 6;
+    case 221: 
+      return 7;
+    case 213: 
+      return 8;
+    case 231: 
+      return 9;
+    case 311: 
+      return 10;
+    case 312: 
+      return 11;
+    case 321: 
+      return 12;
+    }
+    return -1;
+  }
+  
+  public static final float[] permutate(float[] in, int[] permutation)
+  {
+    float[] t = new float[in.length];
+    for (int i = 0; i < in.length; i++) {
+      t[i] = in[permutation[i]];
+    }
+    return t;
+  }
+  
+  public static final double[] permutate(double[] in, int[] permutation)
+  {
+    double[] t = new double[in.length];
+    for (int i = 0; i < in.length; i++) {
+      t[i] = in[permutation[i]];
+    }
+    return t;
+  }
+  
+  public static final float[] permutate(float[] in, int perm)
+  {
+    return permutate(in, getPermutation(perm));
+  }
+  
+  public static final double[] permutate(double[] in, int perm)
+  {
+    return permutate(in, getPermutation(perm));
+  }
+  
+  public static final int getPermutation(int hand1, int hand2, int hand3)
+  {
+    if (hand1 >= hand2)
+    {
+      if (hand2 >= hand3) {
+        return 123;
+      }
+      if (hand1 >= hand3) {
+        return 132;
+      }
+      return 312;
+    }
+    if (hand2 < hand3) {
+      return 321;
+    }
+    if (hand1 < hand3) {
+      return 231;
+    }
+    return 213;
+  }
+  
+  public static final int getPermutation(int hand1, int hand2)
+  {
+    if (hand1 >= hand2) {
+      return 12;
+    }
+    return 21;
+  }
+}
+
+
+
+
+
+
+
+package net.holdemresources.handevaluation.preflop.hands;
+
+public class BitConverter
+{
+  public static byte[] getBytes(int i)
+  {
+    return new byte[] {
+      (byte)(i & 0xFF), 
+      (byte)(i >> 8 & 0xFF), 
+      (byte)(i >> 16 & 0xFF), 
+      (byte)(i >> 24 & 0xFF) };
+  }
+  
+  public static byte[] getBytes(float f)
+  {
+    return getBytes(Float.floatToRawIntBits(f));
+  }
+  
+  public static byte[] getBytes(double d)
+  {
+    return getBytes(Double.doubleToRawLongBits(d));
+  }
+  
+  public static byte[] getBytes(long l)
+  {
+    return new byte[] {
+      (byte)(int)(l & 0xFF), 
+      (byte)(int)(l >> 8 & 0xFF), 
+      (byte)(int)(l >> 16 & 0xFF), 
+      (byte)(int)(l >> 24 & 0xFF), 
+      (byte)(int)(l >> 32 & 0xFF), 
+      (byte)(int)(l >> 40 & 0xFF), 
+      (byte)(int)(l >> 48 & 0xFF), 
+      (byte)(int)(l >> 56 & 0xFF) };
+  }
+  
+  public static int toInt(byte[] b, int offset)
+  {
+    return (b[offset] & 0xFF) + ((b[(offset + 1)] & 0xFF) << 8) + ((b[(offset + 2)] & 0xFF) << 16) + ((b[(offset + 3)] & 0xFF) << 24);
+  }
+  
+  public static long toLong(byte[] b, int offset)
+  {
+    return 
+      (b[offset] & 0xFF) + (
+      (b[(offset + 1)] & 0xFF) << 8) + (
+      (b[(offset + 2)] & 0xFF) << 16) + (
+      (b[(offset + 3)] & 0xFF) << 24) + (
+      (b[(offset + 4)] & 0xFF) << 32) + (
+      (b[(offset + 5)] & 0xFF) << 40) + (
+      (b[(offset + 6)] & 0xFF) << 48) + (
+      (b[(offset + 7)] & 0xFF) << 56);
+  }
+  
+  public static float toFloat(byte[] b, int offset)
+  {
+    return Float.intBitsToFloat(toInt(b, offset));
+  }
+  
+  public static double toDouble(byte[] b, int offset)
+  {
+    return Double.longBitsToDouble(toLong(b, offset));
+  }
+}
