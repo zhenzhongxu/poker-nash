@@ -236,7 +236,7 @@
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Source\Workspaces\popokr\Dev\private\src\Library\Poker.XHandEval\Poker.XHandEval.csproj">
+    <ProjectReference Include="..\Poker.XHandEval\Poker.XHandEval.csproj">
       <Project>{5f54751b-6bb6-4678-9485-67e33460d605}</Project>
       <Name>Poker.XHandEval</Name>
     </ProjectReference>

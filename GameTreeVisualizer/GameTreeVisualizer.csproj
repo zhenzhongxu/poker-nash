@@ -116,7 +116,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameTreeDraft\GameTreeDraft.csproj">
+    <ProjectReference Include="..\GameTreeDraft.csproj">
       <Project>{e921e98e-c86a-4d47-8588-c069f339898d}</Project>
       <Name>GameTreeDraft</Name>
     </ProjectReference>
